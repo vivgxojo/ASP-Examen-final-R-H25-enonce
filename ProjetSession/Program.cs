@@ -15,7 +15,7 @@ namespace ProjetSession
 
             builder.Services.AddSession();
 
-            // TODO : Ajouter les services pour la base de données et l'authentification avec les rôles.
+            // TODO : 3. Ajouter les services pour la base de données et l'authentification avec les rôles.
 
             
             builder.Services.AddRazorPages();

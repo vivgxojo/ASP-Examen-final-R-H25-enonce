@@ -24,13 +24,13 @@
                     context.SaveChanges();
                 }
 
-                //TODO : 1. Récupérer les services de Identity
-                //TODO : 2. Créer le rôle Admin s'il n'existe pas
-                //TODO : 3. Créer l'utilisateur admin@cegep.ca s'il n'existe pas, avec toutes les données nécessaires,
+                //TODO : 7. Récupérer les services de Identity
+                //TODO : 8. Créer le rôle Admin s'il n'existe pas
+                //TODO : 9. Créer l'utilisateur admin@cegep.ca s'il n'existe pas, avec toutes les données nécessaires,
                        // utiliser la variable password_hash fournie, qui correspond à "P@ssword1!"
                 string password_hash = "AQAAAAIAAYagAAAAEKIGTLGlONvlt8tfU2xKzSgFq6lbIFmLCZlkCer5P50YanaW0u7N5DFSaZuQOo46uw==";
                 
-                //TODO : 4. Assigner le rôle Admin à l'utilisateur
+                //TODO : 10. Assigner le rôle Admin à l'utilisateur
 
             }
         }

@@ -3,9 +3,9 @@
 namespace ProjetSession.Models
 {
     //TODO : 2. Installer les packet NuGet pour EntityFramework, Identity et la Session.
-    //TODO : 3. Créer une première migration
-    //TODO : 4. Implémenter l'authentification
-    //TODO : 5. Créer une deuxième migration
+    //TODO : 4. Créer une première migration
+    //TODO : 5. Implémenter l'authentification
+    //TODO : 6. Créer une deuxième migration
 
     public class fl_DBContext : DbContext
     {
