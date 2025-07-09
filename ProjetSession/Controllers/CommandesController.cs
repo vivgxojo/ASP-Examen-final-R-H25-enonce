@@ -4,7 +4,7 @@ using ProjetSession.Models;
 
 namespace ProjetSession.Controllers
 {
-    //TODO : Ajouter les autorisations nécessaires pour que:
+    //TODO : 6. Ajouter les autorisations nécessaires pour que:
             // Tout le monde puisse remplir et voir son panier
             // Seul les usagés authentifiés puisse commander et obtenir une confirmation.
 
@@ -39,6 +39,7 @@ namespace ProjetSession.Controllers
         /// <returns>La vue du panier</returns>
         public IActionResult Panier()
         {
+            List<Film> panier = null;
             // TODO : Récupérer le panier de la session.
 
             if (panier == null)
@@ -56,6 +57,7 @@ namespace ProjetSession.Controllers
         /// <returns>Redirige vers la vue du panier</returns>
         public IActionResult AjouterPanier(int id)
         {
+            List<Film> panier = null;
             var film = FilmsRep.GetFilm(id);
 
             // TODO : Récupérer le panier de la session.
@@ -79,6 +81,7 @@ namespace ProjetSession.Controllers
         /// <returns>La vue de la page de checkout</returns>
         public IActionResult Checkout()
         {
+            List<Film> panier = null;
             // TODO : Récupérer le panier de la session.
 
             if (panier == null)
@@ -86,10 +89,8 @@ namespace ProjetSession.Controllers
                 panier = new List<Film>();
             }
 
-            int panierCount = (int)(panier?.Sum(s => s.Quantite) ?? 0);
-            decimal total = (decimal)(panier?.Sum(s => s.Quantite * s.Film.Prix) ?? 0);
+            decimal total = (decimal)(panier?.Sum(s => s.Prix) ?? 0);
 
-            ViewBag.PanierCount = panierCount != 0 ? panierCount : (int?)null;
             ViewBag.Total = total;
 
             return View();
@@ -106,6 +107,8 @@ namespace ProjetSession.Controllers
             //TODO : Compléter cette méthode pour que la location soit sauvegardée dans la base de données.
             //TODO : Le panier doit aussi être vidé, puis redirger à la confirmation.
             //TODO : Ajouter des commentaires pour expliquer comment la location est sauvegardée.
+
+            return null;
         }
     }
 }
