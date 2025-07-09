@@ -1,0 +1,128 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<ProjetSession.Models.Film>
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Panier";
+    decimal totalWithAdditionalAmount = (decimal)Model.Sum(item => item.Prix);
+}
+
+<style>
+    .content-wrap {
+        padding: 20px 50px;
+        background-color: goldenrod;
+        border-radius: 10px;
+        min-height: 80vh;
+    }
+
+    .billing-div {
+        background-color: #141414;
+        padding: 10px;
+        border-left: 2px solid white;
+    }
+
+    .billing-table tr td,
+    .billing-table tr th {
+        background-color: transparent;
+    }
+
+    .billing-table tr td {
+        text-align: end;
+    }
+
+    .table-links {
+        color: black;
+        text-decoration: none;
+    }
+
+    .cart-product {
+        display: flex;
+        align-items: start;
+        gap: 10px;
+    }
+</style>
+
+<div class="content-wrap">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h3 class="secondary-heading">Films choisis</h3>
+        </div>        
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="billing-div">
+                <h4>Achat</h4>
+                <table class="table table-sm billing-table">
+                    <tr>
+                        <th>Sous-total : </th>
+                        <td>$@totalWithAdditionalAmount</td>
+                    </tr>
+                    <tr>
+                        <th>Grand Total : </th>
+                        <td>$@totalWithAdditionalAmount</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="mt-5">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    if (totalWithAdditionalAmount <= 0)
+                    {
+                        <p class="text-danger">Rien à payer</p>
+                    }
+                    <a class="btn btn-primary" asp-action="Checkout" style="margin-left:300px;">Suivant</a>
+                }
+                else
+                {
+                    // TODO : Informer l'utilisateur qu'il doit s'authentifier pour continuer
+                }
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-bordered" style="vertical-align: middle;">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="cart-product">
+                                        <div style="height: 8rem; width: 8rem;">
+                                            <img style="height: 8rem; width: 6rem;" src="@item.ImageUrl" class="" alt="">
+                                        </div>
+                                        <div>
+                                            <h5>@item.Nom</h5>
+                                        </div>
+                                    </div>
+                                </td>
+                               
+                                <td>
+                                    <h6><p class="mb-1"><b>Prix : </b>$@item.Prix</p></h6>
+                                </td>
+                                
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <th colspan="4" class="text-center"> Votre Panier Est Vide. <a asp-controller="Home" asp-action="Index"> Trouvez votre film dès maintenant. </a></th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

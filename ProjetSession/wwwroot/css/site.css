@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, td, th, tr, ul{
+    color: azure !important;
+}
+
+#myCarousel {
+    max-height: 30rem; /* Hauteur fixe souhaitée */
+}
+
+.carousel-inner {
+    height: 100%; /* Fait en sorte que la hauteur de la carousel-inner soit égale à celle du carousel */
+}
+
+.carousel-item img {
+    object-fit: cover; /* L'image remplit l'espace disponible sans déformer */
+    height: 20rem; /* Pour remplir verticalement */
+    width: 100%; /* Pour remplir horizontalement */
+}

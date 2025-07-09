@@ -1,0 +1,51 @@
+﻿@model ProjetSession.Models.Location
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<h4>Location</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Checkout" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label text-light"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label text-light"></label>
+                <input asp-for="Email" class="form-control" value="@UserManager.GetUserName(User)" disabled />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none;">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" value="@UserManager.GetUserId(User)" disabled />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group text-light">
+                <label asp-for="DateLocation" class="control-label">Date</label>
+                <input asp-for="DateLocation" class="form-control" value="@DateTime.Now" disabled />
+                <span asp-validation-for="DateLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-5   ">
+                <input type="submit" value="Louer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Panier">Retour au Panier</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

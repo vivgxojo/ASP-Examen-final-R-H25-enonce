@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Merci!";
+}
+
+<div id="container" class="d-flex justify-content-center flex-column align-items-center" style="height: 60vh;">
+    <h1>Confirmation</h1>
+    <h2>Merci pour votre commande! Vos films vous seront envoyés par courriel.</h2>
+    <p>Courriel: @UserManager.GetUserName(User)</p>
+    <p><a asp-controller="home" asp-action="index">Retour</a></p>
+</div>
