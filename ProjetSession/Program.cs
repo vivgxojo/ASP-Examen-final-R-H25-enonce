@@ -4,7 +4,7 @@ namespace ProjetSession
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -51,7 +51,7 @@ namespace ProjetSession
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            InitBd.Seed(app);
+            await InitBd.Seed(app);
 
             app.MapRazorPages(); // Ensure Razor Pages are mapped
 
