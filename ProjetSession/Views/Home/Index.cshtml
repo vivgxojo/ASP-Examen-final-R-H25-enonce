@@ -38,8 +38,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Nom)
             </td>
-            <td>
-                    <img style="background-image: url('@item.ImageUrl'); background-size: cover; height: 13.5rem; width: 9rem; background-repeat: no-repeat;" />
+            <td>    
+                    <img src="@item.ImageUrl" alt="Image à venir..." style="background-size: cover; height: 13.5rem; width: 9rem; background-repeat: no-repeat;" />
             </td>
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin")) // admin
                 {
