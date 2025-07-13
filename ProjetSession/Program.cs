@@ -22,7 +22,7 @@ namespace ProjetSession
 
             var app = builder.Build();
 
-            // TODO : Implémenter la gestion globale des erreurs
+            // TODO : 22. Implémenter la gestion globale des erreurs
 
 
             if (app.Environment.IsDevelopment())
@@ -60,7 +60,7 @@ namespace ProjetSession
     }
 }
 
-//TODO : Déployer l'application, incluant la BD, sur Azure:
+//TODO : 23. Déployer l'application, incluant la BD, sur Azure:
     // Copier-coller votre URL ici et laisser le site actif jusqu'à ce que vous receviez votre note finale.
     // URL :
          // _______________________________________________________________________________________________

@@ -4,7 +4,7 @@ using ProjetSession.Models;
 
 namespace ProjetSession.Controllers
 {
-    //TODO : 6. Ajouter les autorisations nécessaires pour que:
+    //TODO : 17. Ajouter les autorisations nécessaires pour que:
             // Tout le monde puisse remplir et voir son panier
             // Seul les usagés authentifiés puisse commander et obtenir une confirmation.
 
@@ -33,19 +33,21 @@ namespace ProjetSession.Controllers
             return View();
         }
 
+        private List<Film> GetPanierFromSession()
+        {
+            List<Film> panier = new List<Film>();
+            // TODO : 13. Récupérer le panier de la session.
+
+            return panier; // Remplacer par la logique de récupération du panier.
+        }
+
         /// <summary>
         /// Action pour afficher le panier actuel
         /// </summary>
         /// <returns>La vue du panier</returns>
         public IActionResult Panier()
         {
-            List<Film> panier = null;
-            // TODO : Récupérer le panier de la session.
-
-            if (panier == null)
-            {
-                panier = new List<Film>();
-            }
+            List<Film> panier = GetPanierFromSession();
 
             return View(panier);
         }
@@ -57,20 +59,13 @@ namespace ProjetSession.Controllers
         /// <returns>Redirige vers la vue du panier</returns>
         public IActionResult AjouterPanier(int id)
         {
-            List<Film> panier = null;
+            List<Film> panier = GetPanierFromSession();
             var film = FilmsRep.GetFilm(id);
-
-            // TODO : Récupérer le panier de la session.
-
-            if (panier == null)
-            {
-                panier = new List<Film>();
-            }
 
             panier.Add(film);
             
 
-            //TODO : Sauvegarder le panier dans la session
+            //TODO : 12. Sauvegarder le panier dans la session
 
             return RedirectToAction("Panier");
         }
@@ -81,14 +76,8 @@ namespace ProjetSession.Controllers
         /// <returns>La vue de la page de checkout</returns>
         public IActionResult Checkout()
         {
-            List<Film> panier = null;
-            // TODO : Récupérer le panier de la session.
-
-            if (panier == null)
-            {
-                panier = new List<Film>();
-            }
-
+            List<Film> panier = GetPanierFromSession();
+           
             decimal total = (decimal)(panier?.Sum(s => s.Prix) ?? 0);
 
             ViewBag.Total = total;
@@ -104,9 +93,9 @@ namespace ProjetSession.Controllers
         [HttpPost]
         public IActionResult Checkout(Location location)
         {
-            //TODO : Compléter cette méthode pour que la location soit sauvegardée dans la base de données.
-            //TODO : Le panier doit aussi être vidé, puis redirger à la confirmation.
-            //TODO : Ajouter des commentaires pour expliquer comment la location est sauvegardée.
+            //TODO : 4. Compléter cette méthode pour que la location soit sauvegardée dans la base de données.
+            //TODO : 15. Le panier doit aussi être vidé, puis redirger à la confirmation.
+            //TODO : 16. Ajouter un commentairs pour expliquer comment la location est sauvegardée.
 
             return null;
         }

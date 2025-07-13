@@ -6,26 +6,18 @@
     ViewData["Title"] = "Index";
 }
 
-<a id="films"></a>
 <h1>Liste de films à louer</h1>
-@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin")) 
-{
-    <p>
-        <a asp-action="Ajouter">Create New</a>
-    </p>
-}
 
-@* TODO : Ajouter un formulaire de recherche permettant de cherche avec une partie du nom des films. *@
-@* TODO : Ajouter des boutons pour passer aux pages précédentes/suivantes *@
+@* TODO : 18. Ajouter un formulaire de recherche permettant de cherche avec une partie du nom des films. *@
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                Nom
             </th>
         </tr>
     </thead>
@@ -44,7 +36,6 @@
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin")) // admin
                 {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
                         @Html.ActionLink("Afficher", "Detail", new {  id=item.Id  }) |
                         @Html.ActionLink("Delete", "Delete", new { id=item.Id  }, new { onclick = "return confirm('Voulez-vous vraiment supprimer ce film?');" })
                     </td>
