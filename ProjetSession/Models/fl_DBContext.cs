@@ -16,7 +16,6 @@ namespace ProjetSession.Models
 
         public DbSet<Film> Films { get; set; }
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Detail_Location> Detail_Location { get; set; }
 
     }
 }

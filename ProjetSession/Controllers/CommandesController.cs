@@ -38,7 +38,7 @@ namespace ProjetSession.Controllers
             List<Film> panier = new List<Film>();
             // TODO : 13. Récupérer le panier de la session.
 
-            return panier; // Remplacer par la logique de récupération du panier.
+            return panier; 
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace ProjetSession.Controllers
         [HttpPost]
         public IActionResult Checkout(Location location)
         {
-            //TODO : 4. Compléter cette méthode pour que la location soit sauvegardée dans la base de données.
+            //TODO : 14. Compléter cette méthode pour que la location soit sauvegardée dans la base de données.
             //TODO : 15. Le panier doit aussi être vidé, puis redirger à la confirmation.
             //TODO : 16. Ajouter un commentairs pour expliquer comment la location est sauvegardée.
 
