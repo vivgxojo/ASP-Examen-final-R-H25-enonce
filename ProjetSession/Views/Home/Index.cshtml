@@ -34,13 +34,13 @@
                     <img src="@item.ImageUrl" alt="Image à venir..." style="background-size: cover; height: 13.5rem; width: 9rem; background-repeat: no-repeat;" />
             </td>
                
-                    <td>
-                        @Html.ActionLink("Afficher", "Detail", new {  id=item.Id  }) |
+                <td>
+                    @Html.ActionLink("Afficher", "Detail", new {  id=item.Id  }) |
                     @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin")) // admin
                     {
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Voulez-vous vraiment supprimer ce film?');" })
-                    
-                }</td>
+                    }    
+                </td>
                 <td>
                     <a asp-controller="Commandes" asp-action="AjouterPanier" asp-route-id="@item.Id" class="btn btn-success d-flex w-70 btn-last" data-carid="230" data-img="https://www.luxurycarrental.ae/uploads/car/MHnh7yJLUAZKLAyt4qTWLrAy5e8dl5ZqDUH5xcYX.webp">
                         Louer ce film<br>(@DateTime.Now.AddDays(7).Date)<br><span style="font-weight:700;">@item.Prix $</span>
